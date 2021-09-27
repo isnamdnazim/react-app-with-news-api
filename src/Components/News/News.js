@@ -1,10 +1,21 @@
 import React from 'react';
+import { Card, Col } from 'react-bootstrap';
 
-const News = () => {
+const News = (props) => {
+    console.log(props.news)
+    const { title, description, urlToImage } = props.news;
     return (
-        <div>
-
-        </div>
+        <Col>
+            <Card>
+                <Card.Img variant="top" src={urlToImage} />
+                <Card.Body>
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Text>
+                        {description}
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </Col>
     );
 };
 
