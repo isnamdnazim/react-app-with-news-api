@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
+import { Button, Row, Spinner } from 'react-bootstrap';
 import News from './Components/News/News';
 
 function App() {
@@ -16,13 +16,27 @@ function App() {
 
   return (
     <div className="App">
-      <Row xs={1} md={2} className="g-4 m-5">
-        {
-          news.map(nw => <News
-            key={nw.url}
-            news={nw} />)
-        }
-      </Row>
+      {
+        news.length === 0 ?
+          <Button variant="primary" className="justify-content-lg-center mt-5" disabled>
+            <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            Loading...
+          </Button>
+          :
+          <Row xs={1} md={3} lg={4} className="g-4 m-5">
+            {
+              news.map(nw => <News
+                key={nw.url}
+                news={nw} />)
+            }
+          </Row>
+      }
     </div>
   );
 }
