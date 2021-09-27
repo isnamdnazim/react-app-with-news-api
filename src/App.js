@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <Row xs={1} md={2} mt-5 className="g-4">
+      <Row xs={1} md={2} className="g-4 m-5">
         {
           news.map(nw => <News
             key={nw.url}
